@@ -13,6 +13,6 @@ namespace WebAppChat.Models
 
         public string Text { get; set; }
 
-        public DateTime When { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }
