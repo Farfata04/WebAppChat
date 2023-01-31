@@ -25,7 +25,7 @@
                 Room
             </a>
 
-            <a class="room-button" href="#">
+            <a class="room-button"id="create-room-btn" href="#">
                 <strong>+</strong>
             </a>
         </div>
@@ -46,7 +46,10 @@
             </footer>
         </form>
     </div>
-    @RenderSection("Scripts,false")
+
+
+    <script src="~/js/site.js"></script>
+    @RenderSection("Script", false)
     
 
 </body>

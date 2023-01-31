@@ -5,33 +5,28 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppChat.Data;
 using WebAppChat.Models;
 
 namespace WebAppChat.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private ApplicationDbContext _ctx;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext ctx) => _ctx = ctx;
+        
+        public IActionResult Index() => View();
+        [HttpPost]
+        public async Task<IActionResult> CreateRoom(string name)
         {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            _ctx.Chats.Add(new Chat
+            {
+                Name=name,
+                Type=ChatType.Room
+            });
+            await _ctx.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 }
