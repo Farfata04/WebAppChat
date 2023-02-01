@@ -8,6 +8,12 @@ namespace WebAppChat.Models
 
     public class Chat
     {
+
+        public Chat()
+        {
+            Messages = new List<Message>();
+            Users = new List<AppUser>();
+        }
         public int Id { get; set; }
 
         public string Name { get; set; }

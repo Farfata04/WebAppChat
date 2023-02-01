@@ -5,7 +5,7 @@ createRoomBtn.addEventListener('click', function () {
     createRoomModal.classList.add('active')
 })
 
-var closeModal = function () {
+function closeModal() {
     createRoomModal.classList.remove('active')
 }
 

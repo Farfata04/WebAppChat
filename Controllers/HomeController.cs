@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,17 @@ namespace WebAppChat.Controllers
         public HomeController(ApplicationDbContext ctx) => _ctx = ctx;
         
         public IActionResult Index() => View();
+
+        [HttpGet("{id}")]
+        public IActionResult Chat (int id)
+        {
+            var chat = _ctx.Chats
+                .Include(x=> x.Messages)
+                .FirstOrDefault(x => x.Id == id);
+            return View(chat);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> CreateRoom(string name)
         {
