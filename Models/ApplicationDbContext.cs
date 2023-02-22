@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using WebAppChat.Models;
 
-namespace WebAppChat.Data
+namespace WebAppChat.Models
 {
     public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
@@ -16,7 +16,5 @@ namespace WebAppChat.Data
         public DbSet<Chat>Chats { get; set; }
 
         public DbSet<Message> Messages { get; set; }
-
-       
     }
 }
