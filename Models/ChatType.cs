@@ -2,10 +2,8 @@
 {
     public enum ChatType
     {
-        Room,
-
+        Room = 1,
         Private
-
     }
     
 
